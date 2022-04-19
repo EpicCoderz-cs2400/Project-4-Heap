@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
@@ -63,7 +63,10 @@ public class UnitTesting {
      public void testAddCaseA0 (){
          MaxHeap<Integer> heapCaseA0 = new MaxHeap<>();
          heapCaseA0.add(1);
-         assertEquals([1], heapCaseA0.toArray());
+         Integer[] expexted;
+         expexted = new Integer[26];
+         expexted[1] = 1;
+         assertArrayEquals(expexted, heapCaseA0.toArray());
      }
 
 

@@ -39,12 +39,14 @@ public final class MaxHeap<T extends Comparable<? super T>>
    public void add(T newEntry)
    {
       if(isEmpty()){
+         lastIndex ++;
          heap[lastIndex] = newEntry;
       }
    } // end add
-
+   
    public T removeMax()
    {
+      return null;
    // See Segment 27.12. 
    } // end removeMax
 
