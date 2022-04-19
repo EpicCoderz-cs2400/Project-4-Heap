@@ -76,6 +76,9 @@ public final class MaxHeap<T extends Comparable<? super T>>
       lastIndex = 0;
    } // end clear
    
+   public T[] toArray(){
+      return this.heap;
+   }
 // Private methods
 // . . .
 } // end MaxHeap

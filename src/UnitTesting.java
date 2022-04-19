@@ -1,3 +1,6 @@
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 public class UnitTesting {
     /* Unit Cases for Creating a Heap from 3 random numbers [A,B,C]:
 
@@ -32,6 +35,12 @@ public class UnitTesting {
     */
 
     /*Unit Cases for Adding to a Heap:
+    Empty Heap-
+    Case # | Case Description | Resulting Heap
+    ------------------------------------------
+    A0     | +A               | [A]
+
+
     Singular Node Heap-
     Case # | Case Description | Resulting Heap
     ------------------------------------------
@@ -48,4 +57,14 @@ public class UnitTesting {
     A7     | +C, A < C, B < C | [C,B,A]
     A8     | +C, A < C, C < B | [B,C,A]
      */
+    
+     //Add Tests
+     @Test
+     public void testAddCaseA0 (){
+         MaxHeap<Integer> heapCaseA0 = new MaxHeap<>();
+         heapCaseA0.add(1);
+         assertEquals([1], heapCaseA0.toArray());
+     }
+
+
 }
