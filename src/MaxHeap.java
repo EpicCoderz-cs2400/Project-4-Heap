@@ -38,11 +38,25 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
    public void add(T newEntry)
    {
-   // See Segment 27.8.
-   } // end add
+      checkIntegrity();        // Ensure initialization of data fields
+      int newIndex = lastIndex + 1;
+      int parentIndex = newIndex / 2;
+      while ( (parentIndex > 0) && newEntry.compareTo(heap[parentIndex]) > 0)
+      {
+         heap[newIndex] = heap[parentIndex];
+         newIndex = parentIndex;
+         parentIndex = newIndex / 2;
+      } // end while
+   
+      heap[newIndex] = newEntry;
+      lastIndex++;
+      ensureCapacity();
 
+   } // end add
+   
    public T removeMax()
    {
+      return null;
    // See Segment 27.12. 
    } // end removeMax
 
@@ -76,9 +90,35 @@ public final class MaxHeap<T extends Comparable<? super T>>
       lastIndex = 0;
    } // end clear
    
-   public T[] toArray(){
-      return this.heap;
+   public T[] toArray()
+   {
+      return heap;
    }
-// Private methods
-// . . .
+
+   // Private methods
+
+   private void checkIntegrity()
+   {
+      if (!integrityOK)
+         throw new SecurityException("Heap is corrupt.");
+   }
+
+   private void checkCapacity(int capacity)
+   {
+      if (capacity > MAX_CAPACITY)
+         throw new IllegalStateException("Attempt to create a heap whose capacity exceeds " +
+                                         "allowed maximum of " + MAX_CAPACITY);
+   }
+
+   private void ensureCapacity()
+   {
+      if (lastIndex + 1 == heap.length && lastIndex * 2 < MAX_CAPACITY)
+      {
+         T[] newHeap = (T[])new Comparable[lastIndex * 2];
+         heap = newHeap;
+      }else if (lastIndex * 2 >= MAX_CAPACITY)
+      {
+         checkCapacity(lastIndex * 2);
+      }
+   }
 } // end MaxHeap

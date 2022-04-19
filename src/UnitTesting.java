@@ -1,6 +1,7 @@
+//import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 public class UnitTesting {
     /* Unit Cases for Creating a Heap from 3 random numbers [A,B,C]:
 
@@ -21,7 +22,6 @@ public class UnitTesting {
     13     | C < B < A        | 0                    | [A,B,C]
      */
 
-    
     /* Uint Cases for Removing from a Heap [A,B,C,D]:
     
     Case # | Case Description | Resulting Heap
@@ -53,18 +53,115 @@ public class UnitTesting {
     ------------------------------------------
     A4     | +C, C = A        | [A,B,C]
     A5     | +C, C < A        | [A,B,C]
-    A6     | +C, A < C, B = C | [C,B,A]
-    A7     | +C, A < C, B < C | [C,B,A]
-    A8     | +C, A < C, C < B | [B,C,A]
+    A6     | +C, A < C        | [C,B,A]
      */
     
      //Add Tests
      @Test
      public void testAddCaseA0 (){
          MaxHeap<Integer> heapCaseA0 = new MaxHeap<>();
-         heapCaseA0.add(1);
-         assertEquals([1], heapCaseA0.toArray());
+         heapCaseA0.add(2);
+         Integer[] expexted;
+         expexted = new Integer[26];
+         expexted[1] = 2;
+         assertArrayEquals(expexted, heapCaseA0.toArray());
+     }
+
+     @Test
+     public void testAddCaseA1 ()
+     {
+         MaxHeap<Integer> heapCaseA1 = new MaxHeap<>();
+         heapCaseA1.add(2);
+         heapCaseA1.add(2);
+
+         Integer[] expexted;
+         expexted = new Integer[26];
+         expexted[1] = 2;
+         expexted[2] = 2;
+
+         assertArrayEquals(expexted, heapCaseA1.toArray());
+     }
+
+     @Test
+     public void testAddCaseA2 ()
+     {
+         MaxHeap<Integer> heapCaseA2 = new MaxHeap<>();
+         heapCaseA2.add(2);
+         heapCaseA2.add(1);
+
+         Integer[] expexted;
+         expexted = new Integer[26];
+         expexted[1] = 2;
+         expexted[2] = 1;
+
+         assertArrayEquals(expexted, heapCaseA2.toArray());
+     }
+
+     @Test
+     public void testAddCaseA3 ()
+     {
+         MaxHeap<Integer> heapCaseA3 = new MaxHeap<>();
+         heapCaseA3.add(2);
+         heapCaseA3.add(1);
+
+         Integer[] expexted;
+         expexted = new Integer[26];
+         expexted[1] = 2;
+         expexted[2] = 1;
+
+         assertArrayEquals(expexted, heapCaseA3.toArray());
+     }
+
+     @Test
+     public void testAddCaseA4 ()
+     {
+         MaxHeap<Integer> heapCaseA4 = new MaxHeap<>();
+         heapCaseA4.add(2);
+         heapCaseA4.add(2);
+         heapCaseA4.add(2);
+
+         Integer[] expexted;
+         expexted = new Integer[26];
+         expexted[1] = 2;
+         expexted[2] = 2;
+         expexted[3] = 2;
+
+         assertArrayEquals(expexted, heapCaseA4.toArray());
+     }
+
+     @Test
+     public void testAddCaseA5 ()
+     {
+         MaxHeap<Integer> heapCaseA5 = new MaxHeap<>();
+         heapCaseA5.add(2);
+         heapCaseA5.add(2);
+         heapCaseA5.add(1);
+
+         Integer[] expexted;
+         expexted = new Integer[26];
+         expexted[1] = 2;
+         expexted[2] = 2;
+         expexted[3] = 1;
+
+         assertArrayEquals(expexted, heapCaseA5.toArray());
+     }
+
+     @Test
+     public void testAddCaseA6 ()
+     {
+         MaxHeap<Integer> heapCaseA6 = new MaxHeap<>();
+         heapCaseA6.add(2);
+         heapCaseA6.add(1);
+         heapCaseA6.add(3);
+
+         Integer[] expexted;
+         expexted = new Integer[26];
+         expexted[1] = 3;
+         expexted[2] = 1;
+         expexted[3] = 2;
+
+         assertArrayEquals(expexted, heapCaseA6.toArray());
      }
 
 
-}
+    }
