@@ -1,6 +1,7 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 public class UnitTesting {
     /* Unit Cases for Creating a Heap from 3 random numbers [A,B,C]:
 
@@ -21,7 +22,6 @@ public class UnitTesting {
     13     | C < B < A        | 0                    | [A,B,C]
      */
 
-    
     /* Uint Cases for Removing from a Heap [A,B,C,D]:
     
     Case # | Case Description | Resulting Heap

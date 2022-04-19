@@ -38,7 +38,9 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
    public void add(T newEntry)
    {
-   // See Segment 27.8.
+      if(isEmpty()){
+         heap[lastIndex] = newEntry;
+      }
    } // end add
 
    public T removeMax()
@@ -76,9 +78,22 @@ public final class MaxHeap<T extends Comparable<? super T>>
       lastIndex = 0;
    } // end clear
    
-   public T[] toArray(){
-      return this.heap;
+   public T[] toArray()
+   {
+      return heap;
    }
 // Private methods
-// . . .
+
+   private void checkIntegrity()
+   {
+      if (!integrityOK)
+         throw new SecurityException("Heap is corrupt.");
+   }
+
+   private void checkCapacity(int capacity)
+   {
+      if (capacity > MAX_CAPACITY)
+         throw new IllegalStateException("Attempt to create a heap whose capacity exceeds " +
+                                         "allowed maximum of " + MAX_CAPACITY);
+   }
 } // end MaxHeap
