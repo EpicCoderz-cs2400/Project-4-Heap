@@ -43,6 +43,8 @@ public final class MaxHeap<T extends Comparable<? super T>>
       int newIndex = lastIndex + 1;
       int parentIndex = newIndex / 2;
       int swaps = 0;
+
+
       while ( (parentIndex > 0) && newEntry.compareTo(heap[parentIndex]) > 0)
       {
          heap[newIndex] = heap[parentIndex];
@@ -50,7 +52,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
          parentIndex = newIndex / 2;
          swaps++;
       } // end while
-   
+
       heap[newIndex] = newEntry;
       lastIndex++;
       ensureCapacity();
@@ -162,7 +164,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
       int swaps = 0;
 
       T rightChild;
-      if (heap[index*2 + 1] == null){
+      if ((index * 2 + 1) > lastIndex){
          rightChild = heap[index];
       } else {
          rightChild = heap[index * 2 + 1];
@@ -239,14 +241,11 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
    private void ensureCapacity()
    {
-      if (lastIndex + 1 == heap.length && lastIndex * 2 < MAX_CAPACITY)
+      if (lastIndex >= heap.length-1)
       {
-         @SuppressWarnings("unchecked")
-         T[] newHeap = (T[])new Comparable[lastIndex * 2];
-         heap = newHeap;
-      }else if (lastIndex * 2 >= MAX_CAPACITY)
-      {
-         checkCapacity(lastIndex * 2);
+         int newSize = lastIndex * 2;
+         checkCapacity(newSize);
+         heap = Arrays.copyOf(heap, newSize);
       }
    }
 } // end MaxHeap

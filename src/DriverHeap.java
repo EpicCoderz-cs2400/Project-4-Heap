@@ -10,7 +10,7 @@ public class DriverHeap {
         ArrayList<Integer> inputData = new ArrayList<>();
 
         try {
-            File randomData = new File("\\data_random.txt");
+            File randomData = new File("src\\data_random.txt");
             Scanner fileScanner = new Scanner(randomData);
             while(fileScanner.hasNextLine()){
                 inputData.add(Integer.valueOf(fileScanner.nextLine()));
