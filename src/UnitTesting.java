@@ -36,6 +36,7 @@ public class UnitTesting {
     R7     | [A,B] Heap           | [B]
     R8     | [A,B,C] Heap, C <= B | [B,C]
     R9     | [A,B,C] Heap, B < C  | [C,B]
+    R0     |[A,B,C,D,E] Heap, C<B | [B,D,C,E]
 
     case where resulting tree is empty
     ab tree
@@ -354,5 +355,26 @@ public class UnitTesting {
          assertArrayEquals(expected, heapCaseR9.toArray());
      }
     
+     @Test
+     public void testRemoveCaseR0 ()
+     {
+        MaxHeap<Integer> heapCaseR0 = new MaxHeap<>();
+        heapCaseR0.add(10);
+        heapCaseR0.add(4);
+        heapCaseR0.add(3);
+        heapCaseR0.add(3);
+        heapCaseR0.add(2);
 
+        Integer[] expected;
+        expected = new Integer[26];
+        expected [1] = 4;
+        expected [2] = 3;
+        expected [3] = 3;
+        expected [4] = 2;
+
+        Integer root = 10;
+
+        assertEquals(root, heapCaseR0.removeMax());
+        assertArrayEquals(expected, heapCaseR0.toArray());
+     }
     }
