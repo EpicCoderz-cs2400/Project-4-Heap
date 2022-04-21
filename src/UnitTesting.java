@@ -246,7 +246,7 @@ public class UnitTesting {
          expected = new Integer[26];
          expected[1] = 3;
          expected[2] = 2;
-         expected[3] = 3;
+         expected[3] = 2;
 
          Integer root = 10;
 

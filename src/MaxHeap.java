@@ -69,36 +69,39 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
       int parentIndex = 1;
       int leftChildIndex = parentIndex * 2;
-      int rightChildIndex = parentIndex * 2 +1;
+      int rightChildIndex = (parentIndex * 2) + 1;
 
       //Compare untill done
-      while (heap[leftChildIndex].compareTo(heap[parentIndex]) > 0 || heap[rightChildIndex].compareTo(heap[parentIndex]) > 0)
+      while (leftChildIndex <= lastIndex)
       {
-         //Check left child first
-         if (heap[leftChildIndex].compareTo(heap[parentIndex]) > 0)
+         //if current node is bigger than any children, all done
+         if (heap[leftChildIndex].compareTo(heap[parentIndex]) <= 0 && heap[rightChildIndex].compareTo(heap[parentIndex]) <= 0)
+         {
+            break;
+         }
+
+         //either left, right, or both are bigger than current node
+
+         //find max of left and right child and replace with larger (favor left)
+         //If left is bigger or equal to right replace left else replace right
+         if (heap[leftChildIndex].compareTo(heap[rightChildIndex]) >= 0)
          {
             T smaller = heap[parentIndex];
             T bigger = heap[leftChildIndex];
             heap[leftChildIndex] = smaller;
             heap[parentIndex] = bigger;
-
             parentIndex = leftChildIndex;
-            leftChildIndex = parentIndex * 2;
-            rightChildIndex = parentIndex * 2 + 1;
-         }
-
-         //Check right child
-         if (heap[rightChildIndex].compareTo(heap[parentIndex]) > 0)
+         } else
          {
             T smaller = heap[parentIndex];
             T bigger = heap[rightChildIndex];
             heap[rightChildIndex] = smaller;
             heap[parentIndex] = bigger;
-
             parentIndex = rightChildIndex;
-            leftChildIndex = parentIndex * 2;
-            rightChildIndex = parentIndex * 2 + 1;
          }
+
+         leftChildIndex = parentIndex * 2;
+         rightChildIndex = parentIndex * 2 + 1;
       }
 
       //return removed item
