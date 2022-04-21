@@ -25,17 +25,17 @@ public class UnitTesting {
 
     /* Uint Cases for Removing from a Heap [A,B,C,D]:
     
-    Case # | Case Description    | Resulting Heap
+    Case # | Case Description     | Resulting Heap
     ------------------------------------------
-    R1     | D = B, D = C        | [D,B,C]
-    R2     | D = B, D < C        | [C,B,D]
-    R3     | D = B, c < D        | [D,B,C]
-    R4     | D < B, D = C        | [B,D,C]
-    R5     | D < B, C <= B       | [B,D,C]
-    R6     | D < B, B < C        | [C,D,B]
-    R7     | [A,B] Heap          | [B]
+    R1     | D = B, D = C         | [D,B,C]
+    R2     | D = B, D < C         | [C,B,D]
+    R3     | D = B, c < D         | [D,B,C]
+    R4     | D < B, D = C         | [B,D,C]
+    R5     | D < B, C <= B        | [B,D,C]
+    R6     | D < B, B < C         | [C,D,B]
+    R7     | [A,B] Heap           | [B]
     R8     | [A,B,C] Heap, C <= B | [B,C]
-    R9     | [A,B,C] Heap, B < C | [C,B]
+    R9     | [A,B,C] Heap, B < C  | [C,B]
 
     case where resulting tree is empty
     ab tree
