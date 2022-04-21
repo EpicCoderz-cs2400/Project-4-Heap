@@ -56,8 +56,23 @@ public final class MaxHeap<T extends Comparable<? super T>>
    
    public T removeMax()
    {
-      return null;
-   // See Segment 27.12. 
+      //Check data and inputs
+
+      //replace root with last index
+      T prevRoot = heap[1];
+      T newRoot = heap[lastIndex];
+      lastIndex--;
+
+      heap[1] = newRoot;
+
+
+      T leftChild = heap[2*1];
+      T rightChild = heap[2*1 + 1];
+
+      //Compare untill done
+      while (leftChild > )
+
+      //return removed item
    } // end removeMax
 
    public T getMax()

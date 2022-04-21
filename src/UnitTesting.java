@@ -1,5 +1,6 @@
 //import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 public class UnitTesting {
@@ -29,8 +30,8 @@ public class UnitTesting {
     R1     | D = B, D = C     | [D,B,C]
     R2     | D = B, D < C     | [C,B,D]
     R3     | D = B, c < D     | [D,B,C]
-    R4     | D < B, B = C     | [B,D,C]
-    R5     | D < B, C < B     | [B,D,C]
+    R4     | D < B, D = C     | [B,D,C]
+    R5     | D < B, C =< B    | [B,D,C]
     R6     | D < B, B < C     | [C,D,B]
     */
 
@@ -164,4 +165,132 @@ public class UnitTesting {
      }
 
 
+     //Remove Tests
+     @Test
+     public void testRemoveCaseR1 ()
+     {
+         MaxHeap<Integer> heapCaseR1 = new MaxHeap<>();
+         heapCaseR1.add(10);
+         heapCaseR1.add(2);
+         heapCaseR1.add(2);
+         heapCaseR1.add(2);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected[1] = 2;
+         expected[2] = 2;
+         expected[3] = 2;
+
+         Integer root = 10;
+
+         assertEquals(root, heapCaseR1.removeMax());
+         assertArrayEquals(expected, heapCaseR1.toArray());
+     }
+    
+     @Test
+     public void testRemoveCaseR2 ()
+     {
+         MaxHeap<Integer> heapCaseR2 = new MaxHeap<>();
+         heapCaseR2.add(10);
+         heapCaseR2.add(2);
+         heapCaseR2.add(3);
+         heapCaseR2.add(2);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected[1] = 3;
+         expected[2] = 2;
+         expected[3] = 2;
+
+         Integer root = 10;
+
+         assertEquals(root, heapCaseR2.removeMax());
+         assertArrayEquals(expected, heapCaseR2.toArray());
+     }
+    
+     @Test
+     public void testRemoveCaseR3 ()
+     {
+         MaxHeap<Integer> heapCaseR3 = new MaxHeap<>();
+         heapCaseR3.add(10);
+         heapCaseR3.add(3);
+         heapCaseR3.add(2);
+         heapCaseR3.add(3);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected[1] = 3;
+         expected[2] = 3;
+         expected[3] = 2;
+
+         Integer root = 10;
+
+         assertEquals(root, heapCaseR3.removeMax());
+         assertArrayEquals(expected, heapCaseR3.toArray());
+     }
+    
+     @Test
+     public void testRemoveCaseR4 ()
+     {
+         MaxHeap<Integer> heapCaseR4 = new MaxHeap<>();
+         heapCaseR4.add(10);
+         heapCaseR4.add(3);
+         heapCaseR4.add(2);
+         heapCaseR4.add(2);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected[1] = 3;
+         expected[2] = 2;
+         expected[3] = 3;
+
+         Integer root = 10;
+
+         assertEquals(root, heapCaseR4.removeMax());
+         assertArrayEquals(expected, heapCaseR4.toArray());
+     }
+    
+     @Test
+     public void testRemoveCaseR5 ()
+     {
+         MaxHeap<Integer> heapCaseR5 = new MaxHeap<>();
+         heapCaseR5.add(10);
+         heapCaseR5.add(3);
+         heapCaseR5.add(1);
+         heapCaseR5.add(2);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected[1] = 3;
+         expected[2] = 2;
+         expected[3] = 1;
+
+         Integer root = 10;
+
+         assertEquals(root, heapCaseR5.removeMax());
+         assertArrayEquals(expected, heapCaseR5.toArray());
+     }
+    
+     @Test
+     public void testRemoveCaseR6 ()
+     {
+         MaxHeap<Integer> heapCaseR6 = new MaxHeap<>();
+         heapCaseR6.add(10);
+         heapCaseR6.add(3);
+         heapCaseR6.add(4);
+         heapCaseR6.add(2);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected [1] = 4;
+         expected [2] = 2;
+         expected [3] = 3;
+
+         Integer root = 10;
+
+         assertEquals(root, heapCaseR6.removeMax());
+         assertArrayEquals(expected, heapCaseR6.toArray());
+     }
+    
+    
     }
