@@ -31,7 +31,7 @@ public class DriverHeap {
 
         MaxHeap<Integer> optimalHeap = new MaxHeap<>(entries);
         
-        File heapOut = new File("heap_results.txt");
+        //File heapOut = new File("heap_results.txt");
 
         try {
             FileWriter heapWriter = new FileWriter("heap_results.txt");
@@ -42,7 +42,7 @@ public class DriverHeap {
                 heapWriter.write(sequHeap.getElementAt(i) + ", ");
             }
             heapWriter.write("\nNumber of swaps in the heap creation: ");
-            heapWriter.write(sequHeap.getSwaps());
+            heapWriter.write(sequHeap.getSwaps() + " ");
             for (int i = 0; i < 10; i++) {
                 sequHeap.removeMax();
             }
@@ -56,7 +56,7 @@ public class DriverHeap {
                 heapWriter.write(optimalHeap.getElementAt(i) + ", ");
             }
             heapWriter.write("\nNumber of swaps in the heap creation: ");
-            heapWriter.write(optimalHeap.getSwaps());
+            heapWriter.write(optimalHeap.getSwaps() + " ");
             for (int i = 0; i < 10; i++) {
                 optimalHeap.removeMax();
             }
