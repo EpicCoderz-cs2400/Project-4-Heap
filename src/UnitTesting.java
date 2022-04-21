@@ -381,7 +381,7 @@ public class UnitTesting {
     
      //optimal insert tests
      @Test
-     public void testSequentialCase4 ()
+     public void testOptimalCase4 ()
      {
          Integer[] input;
          input = new Integer[3];
@@ -403,4 +403,86 @@ public class UnitTesting {
          assertEquals(expSwaps, heapCase4.getSwaps());
          
      }
+
+     @Test
+     public void testOptimalNew ()
+     {
+         Integer[] input = {10, 15, 8, 9, 11, 6, 4, 8, 19};
+
+         MaxHeap<Integer> heapNew = new MaxHeap<>(input);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected[1] = 19;
+         expected[2] = 15;
+         expected[3] = 8;
+         expected[4] = 10;
+         expected[5] = 11;
+         expected[6] = 6;
+         expected[7] = 4;
+         expected[8] = 8;
+         expected[9] = 9;
+
+         int expSwaps = 4;
+
+         assertArrayEquals(expected, heapNew.toArray());
+         assertEquals(expSwaps, heapNew.getSwaps());
+         
+     }
+    
+    
+     //Sequential insert tests
+     @Test
+     public void testSequentialCase4 ()
+     {
+         Integer[] input;
+         input = new Integer[3];
+         input[0] = 2;
+         input[1] = 4;
+         input[2] = 8;
+
+         MaxHeap<Integer> heapCase4 = new MaxHeap<>();
+         heapCase4.setHeap(input);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected[1] = 8;
+         expected[2] = 2;
+         expected[3] = 4;
+
+         int expSwaps = 2;
+
+         assertArrayEquals(expected, heapCase4.toArray());
+         assertEquals(expSwaps, heapCase4.getSwaps());
+         
+     }
+
+     @Test
+     public void testSequentialNew ()
+     {
+         Integer[] input = {10, 15, 8, 9, 11, 6, 4, 8, 19};
+
+         MaxHeap<Integer> heapNew = new MaxHeap<>();
+         heapNew.setHeap(input);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected[1] = 19;
+         expected[2] = 15;
+         expected[3] = 8;
+         expected[4] = 11;
+         expected[5] = 10;
+         expected[6] = 6;
+         expected[7] = 4;
+         expected[8] = 8;
+         expected[9] = 9;
+
+         int expSwaps = 5;
+
+         assertArrayEquals(expected, heapNew.toArray());
+         assertEquals(expSwaps, heapNew.getSwaps());
+         
+     }
+    
+
     }

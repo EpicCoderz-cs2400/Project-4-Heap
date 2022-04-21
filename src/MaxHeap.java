@@ -37,21 +37,24 @@ public final class MaxHeap<T extends Comparable<? super T>>
       integrityOK = true;
    } // end constructor
 
-   public void add(T newEntry)
+   public int add(T newEntry)
    {
       checkIntegrity();        // Ensure initialization of data fields
       int newIndex = lastIndex + 1;
       int parentIndex = newIndex / 2;
+      int swaps = 0;
       while ( (parentIndex > 0) && newEntry.compareTo(heap[parentIndex]) > 0)
       {
          heap[newIndex] = heap[parentIndex];
          newIndex = parentIndex;
          parentIndex = newIndex / 2;
+         swaps++;
       } // end while
    
       heap[newIndex] = newEntry;
       lastIndex++;
       ensureCapacity();
+      return swaps;
 
    } // end add
    
@@ -187,6 +190,15 @@ public final class MaxHeap<T extends Comparable<? super T>>
       }
 
       return swaps;
+   }
+
+   //sequential method
+   public void setHeap(T[] entries)
+   {
+      for(int i = 0; i < entries.length; i++)
+      {
+         creationSwaps += add(entries[i]);
+      }
    }
 
    public int getSwaps()
