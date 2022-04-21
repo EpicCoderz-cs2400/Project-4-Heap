@@ -57,6 +57,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
    public T removeMax()
    {
       //Check data and inputs
+      checkIntegrity();
 
       //replace root with last index
       T prevRoot = heap[1];
