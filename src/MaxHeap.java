@@ -56,8 +56,65 @@ public final class MaxHeap<T extends Comparable<? super T>>
    
    public T removeMax()
    {
-      return null;
-   // See Segment 27.12. 
+      //Check data and inputs
+
+      //replace root with last index
+      T prevRoot = heap[1];
+      T newRoot = heap[lastIndex];
+      heap[1] = newRoot;
+
+      //remove last entry
+      heap[lastIndex] = null;
+      lastIndex--;
+
+      int parentIndex = 1;
+      int leftChildIndex = parentIndex * 2;
+      int rightChildIndex = (parentIndex * 2) + 1;
+
+      //Compare untill done
+
+      //while not at a leaf node
+      while (leftChildIndex <= lastIndex)
+      {
+         //does a right child exist if not make a placholder = to current
+         T rightChild;
+         if (lastIndex < rightChildIndex){
+            rightChild = heap[parentIndex];
+         } else {
+            rightChild = heap[rightChildIndex];
+         }
+         //if current node is bigger than left or right children, all done
+         if (heap[leftChildIndex].compareTo(heap[parentIndex]) <= 0 && rightChild.compareTo(heap[parentIndex]) <= 0)
+         {
+            break;
+         }
+
+         //either left, right, or both are bigger than current node
+
+         //find max of left and right child and replace with larger (favor left)
+         //If left is bigger or equal to right replace left else replace right
+         if (heap[leftChildIndex].compareTo(rightChild) >= 0)
+         {
+            T smaller = heap[parentIndex];
+            T bigger = heap[leftChildIndex];
+            heap[leftChildIndex] = smaller;
+            heap[parentIndex] = bigger;
+            parentIndex = leftChildIndex;
+         } else
+         {
+            T smaller = heap[parentIndex];
+            T bigger = heap[rightChildIndex];
+            heap[rightChildIndex] = smaller;
+            heap[parentIndex] = bigger;
+            parentIndex = rightChildIndex;
+         }
+
+         leftChildIndex = parentIndex * 2;
+         rightChildIndex = parentIndex * 2 + 1;
+      }
+
+      //return removed item
+      return prevRoot;
    } // end removeMax
 
    public T getMax()
