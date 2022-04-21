@@ -377,4 +377,19 @@ public class UnitTesting {
         assertEquals(root, heapCaseR0.removeMax());
         assertArrayEquals(expected, heapCaseR0.toArray());
      }
+    
+    
+     //Seuqential insert tests
+     @Test
+     public void testSequentialCase4 ()
+     {
+         Integer[] input;
+         input = new Integer[3];
+         input[0] = 8;
+         input[1] = 4;
+         input[2] = 2;
+
+         MaxHeap<Integer> heapCase4 = sequentialHeap(input);
+         
+     }
     }

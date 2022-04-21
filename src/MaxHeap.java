@@ -153,6 +153,51 @@ public final class MaxHeap<T extends Comparable<? super T>>
       return heap;
    }
 
+   public int reheap(int index)
+   {
+      int swaps = 0;
+
+      T rightChild;
+      if (heap[index*2 + 1] == null){
+         rightChild = heap[index];
+      } else {
+         rightChild = heap[index * 2 + 1];
+      }
+      T leftChild = heap[index *2];
+
+      if (leftChild.compareTo(heap[index]) <= 0 && rightChild.compareTo(heap[index]) <= 0){
+         return swaps;
+      }
+
+      if(leftChild.compareTo(rightChild) >= 0){
+         heap[index * 2] = heap[index];
+         heap[index] = leftChild;
+         swaps++;
+      } else {
+         heap[index * 2 + 1] = heap[index];
+         heap[index] = rightChild;
+         swaps++;
+      }
+
+      if (index * 4 <= lastIndex){
+         swaps += reheap(index*2);
+      } else if ((index *2 + 1)*2 <= lastIndex){
+         swaps += reheap(index*2 + 1);
+      }
+
+      return swaps;
+   }
+
+   //optimal method
+   public MaxHeap(T[] entries)
+   {
+      this(entries.length);
+      
+      for(int i = 0; i < entries.length; i++)
+      {
+         heap[i+1] = entries[i];
+      }
+   }
    // Private methods
 
    private void checkIntegrity()
