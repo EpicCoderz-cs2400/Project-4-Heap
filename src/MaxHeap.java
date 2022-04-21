@@ -65,14 +65,42 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
       heap[1] = newRoot;
 
-
-      T leftChild = heap[2*1];
-      T rightChild = heap[2*1 + 1];
+      int parentIndex = 1;
+      int leftChildIndex = parentIndex * 2;
+      int rightChildIndex = parentIndex * 2 +1;
 
       //Compare untill done
-      while (leftChild > )
+      while (heap[leftChildIndex].compareTo(heap[parentIndex]) > 0 || heap[rightChildIndex].compareTo(heap[parentIndex]) > 0)
+      {
+         //Check left child first
+         if (heap[leftChildIndex].compareTo(heap[parentIndex]) > 0)
+         {
+            T smaller = heap[parentIndex];
+            T bigger = heap[leftChildIndex];
+            heap[leftChildIndex] = smaller;
+            heap[parentIndex] = bigger;
+
+            parentIndex = leftChildIndex;
+            leftChildIndex = parentIndex * 2;
+            rightChildIndex = parentIndex * 2 + 1;
+         }
+
+         //Check right child
+         if (heap[rightChildIndex].compareTo(heap[parentIndex]) > 0)
+         {
+            T smaller = heap[parentIndex];
+            T bigger = heap[rightChildIndex];
+            heap[rightChildIndex] = smaller;
+            heap[parentIndex] = bigger;
+
+            parentIndex = rightChildIndex;
+            leftChildIndex = parentIndex * 2;
+            rightChildIndex = parentIndex * 2 + 1;
+         }
+      }
 
       //return removed item
+      return prevRoot;
    } // end removeMax
 
    public T getMax()

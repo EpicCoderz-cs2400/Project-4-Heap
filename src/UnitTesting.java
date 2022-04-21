@@ -33,6 +33,10 @@ public class UnitTesting {
     R4     | D < B, D = C     | [B,D,C]
     R5     | D < B, C =< B    | [B,D,C]
     R6     | D < B, B < C     | [C,D,B]
+
+    case where resulting tree is empty
+    ab tree
+    abc tree
     */
 
     /*Unit Cases for Adding to a Heap:
