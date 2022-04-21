@@ -1,4 +1,4 @@
-//import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,7 @@ public class UnitTesting {
     1      | A = B = C        | 0                    | [A,B,C]
     2      | A < B = C        | 1                    | [B,A,C]
     3      | A = B < C        | 1                    | [C,B,A]
-    4      | A < B < C        | 2                    | [C,A,B]
+    4      | A < B < C        | 1                    | [C,B,A]
     5      | A = C < B        | 1                    | [B,A,C]
     6      | A < C < B        | 1                    | [B,A,C]
     7      | B < A = C        | 0                    | [A,B,C]
@@ -379,17 +379,28 @@ public class UnitTesting {
      }
     
     
-     //Seuqential insert tests
+     //optimal insert tests
      @Test
      public void testSequentialCase4 ()
      {
          Integer[] input;
          input = new Integer[3];
-         input[0] = 8;
+         input[0] = 2;
          input[1] = 4;
-         input[2] = 2;
+         input[2] = 8;
 
-         MaxHeap<Integer> heapCase4 = sequentialHeap(input);
+         MaxHeap<Integer> heapCase4 = new MaxHeap<>(input);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected[1] = 8;
+         expected[2] = 4;
+         expected[3] = 2;
+
+         int expSwaps = 1;
+
+         assertArrayEquals(expected, heapCase4.toArray());
+         assertEquals(expSwaps, heapCase4.getSwaps());
          
      }
     }

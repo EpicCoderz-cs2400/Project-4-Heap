@@ -14,6 +14,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
    private boolean integrityOK = false;
 	private static final int DEFAULT_CAPACITY = 25;
 	private static final int MAX_CAPACITY = 10000;
+   private int creationSwaps;
    
    public MaxHeap()
    {
@@ -188,6 +189,10 @@ public final class MaxHeap<T extends Comparable<? super T>>
       return swaps;
    }
 
+   public int getSwaps()
+   {
+      return creationSwaps;
+   }
    //optimal method
    public MaxHeap(T[] entries)
    {
@@ -196,6 +201,13 @@ public final class MaxHeap<T extends Comparable<? super T>>
       for(int i = 0; i < entries.length; i++)
       {
          heap[i+1] = entries[i];
+      }
+      lastIndex = entries.length;
+
+      int startIndex = lastIndex / 2;
+
+      for (int i = startIndex; i > 0; i-- ){
+         creationSwaps += reheap(i);
       }
    }
    // Private methods
@@ -217,6 +229,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
    {
       if (lastIndex + 1 == heap.length && lastIndex * 2 < MAX_CAPACITY)
       {
+         @SuppressWarnings("unchecked")
          T[] newHeap = (T[])new Comparable[lastIndex * 2];
          heap = newHeap;
       }else if (lastIndex * 2 >= MAX_CAPACITY)
