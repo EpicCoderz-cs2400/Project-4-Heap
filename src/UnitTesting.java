@@ -31,10 +31,10 @@ public class UnitTesting {
     R2     | D = B, D < C        | [C,B,D]
     R3     | D = B, c < D        | [D,B,C]
     R4     | D < B, D = C        | [B,D,C]
-    R5     | D < B, C =< B       | [B,D,C]
+    R5     | D < B, C <= B       | [B,D,C]
     R6     | D < B, B < C        | [C,D,B]
     R7     | [A,B] Heap          | [B]
-    R8     | [A,B,C] Heap, C < B | [B,C]
+    R8     | [A,B,C] Heap, C <= B | [B,C]
     R9     | [A,B,C] Heap, B < C | [C,B]
 
     case where resulting tree is empty
@@ -299,5 +299,60 @@ public class UnitTesting {
          assertArrayEquals(expected, heapCaseR6.toArray());
      }
     
+     @Test
+     public void testRemoveCaseR7 ()
+     {
+         MaxHeap<Integer> heapCaseR7 = new MaxHeap<>();
+         heapCaseR7.add(10);
+         heapCaseR7.add(3);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected [1] = 3;
+
+         Integer root = 10;
+
+         assertEquals(root, heapCaseR7.removeMax());
+         assertArrayEquals(expected, heapCaseR7.toArray());
+     }
     
+     @Test
+     public void testRemoveCaseR8 ()
+     {
+         MaxHeap<Integer> heapCaseR8 = new MaxHeap<>();
+         heapCaseR8.add(10);
+         heapCaseR8.add(3);
+         heapCaseR8.add(2);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected [1] = 3;
+         expected [2] = 2;
+
+         Integer root = 10;
+
+         assertEquals(root, heapCaseR8.removeMax());
+         assertArrayEquals(expected, heapCaseR8.toArray());
+     }
+    
+     @Test
+     public void testRemoveCaseR9 ()
+     {
+         MaxHeap<Integer> heapCaseR9 = new MaxHeap<>();
+         heapCaseR9.add(10);
+         heapCaseR9.add(3);
+         heapCaseR9.add(4);
+
+         Integer[] expected;
+         expected = new Integer[26];
+         expected [1] = 4;
+         expected [2] = 3;
+
+         Integer root = 10;
+
+         assertEquals(root, heapCaseR9.removeMax());
+         assertArrayEquals(expected, heapCaseR9.toArray());
+     }
+    
+
     }
