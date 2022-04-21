@@ -39,7 +39,7 @@ public class DriverHeap {
 
             heapWriter.write("Heap built using sequential insertions: ");
             for(int i = 1; i < 11; i++){
-                heapWriter.write(sequHeap.toArray()[i] + ", ");
+                heapWriter.write(sequHeap.getElementAt(i) + ", ");
             }
             heapWriter.write("\nNumber of swaps in the heap creation: ");
             heapWriter.write(sequHeap.getSwaps());
@@ -48,12 +48,12 @@ public class DriverHeap {
             }
             heapWriter.write("\nHeap after 10 removals: ");
             for(int i = 1; i < 11; i++){
-                heapWriter.write(sequHeap.toArray()[i] + ", ");
+                heapWriter.write(sequHeap.getElementAt(i) + ", ");
             }
 
             heapWriter.write("\n\nHeap built using optimal method: ");
             for(int i = 1; i < 11; i++){
-                heapWriter.write(optimalHeap.toArray()[i] + ", ");
+                heapWriter.write(optimalHeap.getElementAt(i) + ", ");
             }
             heapWriter.write("\nNumber of swaps in the heap creation: ");
             heapWriter.write(optimalHeap.getSwaps());
@@ -62,7 +62,7 @@ public class DriverHeap {
             }
             heapWriter.write("\nHeap after 10 removals: ");
             for(int i = 1; i < 11; i++){
-                heapWriter.write(optimalHeap.toArray()[i] + ", ");
+                heapWriter.write(optimalHeap.getElementAt(i) + ", ");
             }          
             heapWriter.close();
         } catch (IOException e) {

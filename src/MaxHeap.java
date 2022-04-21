@@ -159,6 +159,11 @@ public final class MaxHeap<T extends Comparable<? super T>>
       return heap;
    }
 
+   public T getElementAt(int index)
+   {
+      return heap[index];
+   }
+
    public int reheap(int index)
    {
       int swaps = 0;
