@@ -167,6 +167,9 @@ public final class MaxHeap<T extends Comparable<? super T>>
    public int reheap(int index)
    {
       int swaps = 0;
+      if(index == 0){
+         return swaps;
+      }
 
       T rightChild;
       if ((index * 2 + 1) > lastIndex){
@@ -184,18 +187,15 @@ public final class MaxHeap<T extends Comparable<? super T>>
          heap[index * 2] = heap[index];
          heap[index] = leftChild;
          swaps++;
+         swaps += reheap(index/2);
       } else {
          heap[index * 2 + 1] = heap[index];
          heap[index] = rightChild;
          swaps++;
+         swaps += reheap(index/2);
       }
 
-      if (index * 4 <= lastIndex){
-         swaps += reheap(index*2);
-      } else if ((index *2 + 1)*2 <= lastIndex){
-         swaps += reheap(index*2 + 1);
-      }
-
+   
       return swaps;
    }
 
