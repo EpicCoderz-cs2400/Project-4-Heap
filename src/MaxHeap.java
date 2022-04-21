@@ -61,9 +61,11 @@ public final class MaxHeap<T extends Comparable<? super T>>
       //replace root with last index
       T prevRoot = heap[1];
       T newRoot = heap[lastIndex];
-      lastIndex--;
-
       heap[1] = newRoot;
+
+      //remove last entry
+      heap[lastIndex] = null;
+      lastIndex--;
 
       int parentIndex = 1;
       int leftChildIndex = parentIndex * 2;
