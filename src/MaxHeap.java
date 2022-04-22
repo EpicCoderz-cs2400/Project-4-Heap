@@ -4,6 +4,7 @@ import java.util.Arrays;
  
    @author Frank M. Carrano
    @author Timothy M. Henry
+   @author Michael J. Smith
    @version 5.0
 */
 public final class MaxHeap<T extends Comparable<? super T>>
